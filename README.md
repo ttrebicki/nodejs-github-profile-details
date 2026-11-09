@@ -1,5 +1,7 @@
 # GitHub profile details (Node.js)
 
+Solution for the [Node.js GitHub profile details project](https://roadmap.sh/projects/nodejs-github-profile-details) on [roadmap.sh](https://roadmap.sh/).
+
 Small command-line script that looks up a GitHub username with the [GitHub REST API](https://docs.github.com/en/rest/users/users#get-a-user) and prints a few profile fields to the terminal.
 
 ## What it does
