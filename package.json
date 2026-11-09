@@ -1,0 +1,15 @@
+{
+  "name": "nodejs-github-profile-details",
+  "version": "1.0.0",
+  "description": "CLI that prints selected fields from a GitHub user profile via the public REST API",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "license": "MIT",
+  "private": true
+}
