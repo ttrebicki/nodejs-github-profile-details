@@ -6,7 +6,7 @@ Small command-line script that looks up a GitHub username with the [GitHub REST 
 
 Given a GitHub username, the script:
 
-1. Calls `GET https://api.github.com/users/{username}` (no API token required for public profiles).
+1. Calls `GET https://api.github.com/users/{username}` with GitHub-recommended `Accept` and `User-Agent` headers (no API token required for public profiles).
 2. If the user exists, prints:
    - Display name
    - Login
@@ -15,6 +15,7 @@ Given a GitHub username, the script:
    - Follower count
 3. If the user does not exist, prints an error and exits with code `1`.
 4. On network or other failures, prints the error and exits with code `1`.
+5. If no username is passed on the command line, prints an error and exits with code `1`.
 
 ## Requirements
 
@@ -60,7 +61,15 @@ Public repos: 8
 Followers: 10000
 ```
 
-If the username is missing, the script prints nothing and exits with code `0` (same as running it with no args).
+If you omit the username:
+
+```bash
+node index.js
+```
+
+```text
+error: please provide a Github username
+```
 
 ## API limits
 
