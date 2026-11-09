@@ -6,7 +6,7 @@ Small command-line script that looks up a GitHub username with the [GitHub REST 
 
 Given a GitHub username, the script:
 
-1. Calls `GET https://api.github.com/users/{username}` with GitHub-recommended `Accept` and `User-Agent` headers (no API token required for public profiles).
+1. Builds `GET https://api.github.com/users/{username}` with the username escaped via [`encodeURIComponent()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent), and sends GitHub-recommended `Accept` and `User-Agent` headers (no API token required for public profiles).
 2. If the user exists, prints:
    - Display name
    - Login
@@ -70,6 +70,16 @@ node index.js
 ```text
 error: please provide a Github username
 ```
+
+## `encodeURIComponent`
+
+Usernames from the command line are embedded in the URL path. `encodeURIComponent()` percent-encodes characters that would otherwise break or alter the URL (for example `#`, `?`, `%`, or spaces), so the request targets a single path segment and GitHub receives the intended login.
+
+```js
+`https://api.github.com/users/${encodeURIComponent(username)}`
+```
+
+Without encoding, a value like `user?name` could be parsed as a query string instead of part of the username path.
 
 ## API limits
 
